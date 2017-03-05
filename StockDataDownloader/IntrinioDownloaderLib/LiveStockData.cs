@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IntrinioDownloaderLib
 {
-    public class Class1
+    public class LiveStockData
     {
     }
 }
