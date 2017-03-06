@@ -22,7 +22,7 @@ namespace IntrinioDownloaderLib
         {
             RestRequest request = new RestRequest("data_point?identifier={ticker}&item=last_price", Method.GET);
 
-            request.AddUrlSegment("ticker", ticker);
+            request.AddUrlSegment("ticker", ticker.ToUpper());
 
             var response = client.Execute<StockPriceInfo>(request);
 
@@ -44,7 +44,7 @@ namespace IntrinioDownloaderLib
 
             foreach (string ticker in tickers)
             {
-                tickers_string += $"{ticker},";
+                tickers_string += $"{ticker.ToUpper()},";
             }
 
             request.AddUrlSegment("tickers", tickers_string);
