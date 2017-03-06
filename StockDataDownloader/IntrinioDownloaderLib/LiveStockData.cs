@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
 
 using RestSharp;
 using RestSharp.Authenticators;
@@ -20,13 +20,15 @@ namespace IntrinioDownloaderLib
 
         public StockPriceInfo GetLatestPrice(string ticker)
         {
-            RestRequest request = new RestRequest("data_point?identifier={tickerr}&item=last_price", Method.GET);
+            RestRequest request = new RestRequest("data_point?identifier={ticker}&item=last_price", Method.GET);
 
             request.AddUrlSegment("ticker", ticker);
 
-            StockPriceInfo response = client.Execute<StockPriceInfo>(request).Data;
+            var response = client.Execute<StockPriceInfo>(request);
 
-            return response;
+            CheckResponse(response);
+
+            return response.Data;
         }
 
         public List<StockPriceInfo> GetLatestPrice(List<string> tickers)
@@ -42,9 +44,19 @@ namespace IntrinioDownloaderLib
 
             request.AddUrlSegment("tickers", tickers_string);
 
-            StockPriceInfoMultiple response = client.Execute<StockPriceInfoMultiple>(request).Data;
+            var response = client.Execute<StockPriceInfoMultiple>(request);
 
-            return response.Data;
+            CheckResponse(response);
+
+            return response.Data.Infos;
+        }
+
+        private void CheckResponse(IRestResponse response)
+        {
+            if (response.ErrorException != null)
+            {
+                throw new ApplicationException("Error retrieving message!", response.ErrorException);
+            }
         }
     }
 
@@ -57,7 +69,8 @@ namespace IntrinioDownloaderLib
 
     internal struct StockPriceInfoMultiple
     {
-        public List<StockPriceInfo> Data { get; set; }
+        [DeserializeAs(Name = "data")]
+        public List<StockPriceInfo> Infos { get; set; }
 
         [DeserializeAs(Name = "result_count")]
         public int ResultCount { get; set; }

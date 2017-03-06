@@ -15,13 +15,25 @@ namespace CmdUtility
 
             LiveStockData liveStockData = new LiveStockData(username, password);
 
-            List<string> tickers = new List<string> { "AMD", "AAPL", "NBR" };
+            List<string> tickers = new List<string> { "AMD", "NBR" };
 
-            List<StockPriceInfo> stockPriceInfos = liveStockData.GetLatestPrice(tickers);
-
-            foreach (StockPriceInfo priceInfo in stockPriceInfos)
+            try
             {
-                Console.WriteLine($"{priceInfo.Identifier}: {priceInfo.Value}");
+                List<StockPriceInfo> stockPriceInfos = liveStockData.GetLatestPrice(tickers);
+
+                foreach (StockPriceInfo priceInfo in stockPriceInfos)
+                {
+                    Console.WriteLine($"{priceInfo.Identifier}: {priceInfo.Value}");
+                }
+            }
+            catch (ApplicationException ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine(ex.InnerException.Message);
+                }
             }
         }
     }
