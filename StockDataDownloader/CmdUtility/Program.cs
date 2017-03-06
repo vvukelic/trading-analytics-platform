@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 
 using IntrinioDownloaderLib;
@@ -14,9 +15,14 @@ namespace CmdUtility
 
             LiveStockData liveStockData = new LiveStockData(username, password);
 
-            float lastPrice = liveStockData.GetLatestPrice("AMD");
+            List<string> tickers = new List<string> { "AMD", "AAPL", "NBR" };
 
-            Console.WriteLine($"{lastPrice}");
+            List<StockPriceInfo> stockPriceInfos = liveStockData.GetLatestPrice(tickers);
+
+            foreach (StockPriceInfo priceInfo in stockPriceInfos)
+            {
+                Console.WriteLine($"{priceInfo.Identifier}: {priceInfo.Value}");
+            }
         }
     }
 }
