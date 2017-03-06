@@ -33,6 +33,11 @@ namespace IntrinioDownloaderLib
 
         public List<StockPriceInfo> GetLatestPrice(List<string> tickers)
         {
+            if (tickers.Count <= 1)
+            {
+                throw new ApplicationException("This call should be used only for getting multiple tickers data!");
+            }
+
             RestRequest request = new RestRequest("data_point?identifier={tickers}&item=last_price", Method.GET);
 
             string tickers_string = string.Empty;
