@@ -26,7 +26,7 @@ namespace CmdUtility
                     Console.WriteLine($"{priceInfo.Identifier}: {priceInfo.Value}");
                 }
             }
-            catch (ApplicationException ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
 

@@ -35,7 +35,7 @@ namespace IntrinioDownloaderLib
         {
             if (tickers.Count <= 1)
             {
-                throw new ApplicationException("This call should be used only for getting multiple tickers data!");
+                throw new Exception("This call should be used only for getting multiple tickers data!");
             }
 
             RestRequest request = new RestRequest("data_point?identifier={tickers}&item=last_price", Method.GET);
@@ -60,7 +60,7 @@ namespace IntrinioDownloaderLib
         {
             if (response.ErrorException != null)
             {
-                throw new ApplicationException("Error retrieving message!", response.ErrorException);
+                throw new Exception("Error retrieving message!", response.ErrorException);
             }
         }
     }
