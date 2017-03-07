@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-
-using IntrinioDownloaderLib;
 
 namespace CmdUtility
 {
@@ -10,31 +7,10 @@ namespace CmdUtility
     {
         static void Main(string[] args)
         {
-            string username = ConfigurationManager.AppSettings["username"];
-            string password = ConfigurationManager.AppSettings["password"];
-
-            LiveStockData liveStockData = new LiveStockData(username, password);
-
-            List<string> tickers = new List<string> { "AMD", "NBR" };
-
-            try
-            {
-                List<StockPriceInfo> stockPriceInfos = liveStockData.GetLatestPrice(tickers);
-
-                foreach (StockPriceInfo priceInfo in stockPriceInfos)
-                {
-                    Console.WriteLine($"{priceInfo.Identifier}: {priceInfo.Value}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-
-                if (ex.InnerException != null)
-                {
-                    Console.WriteLine(ex.InnerException.Message);
-                }
-            }
+            CmdUtility cmdUtility = new CmdUtility();
+            cmdUtility.Run();
         }
+
+        
     }
 }
