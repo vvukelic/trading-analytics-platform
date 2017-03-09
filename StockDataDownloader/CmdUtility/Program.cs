@@ -10,7 +10,5 @@ namespace CmdUtility
             CmdUtility cmdUtility = new CmdUtility();
             cmdUtility.Run();
         }
-
-        
     }
 }
