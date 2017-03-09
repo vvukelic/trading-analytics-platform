@@ -40,10 +40,20 @@ namespace CmdUtility
                         GetStockData();
                         break;
 
+                    case "a":
+                        AddTickers();
+                        break;
+
+                    case "p":
+                        PrintTickerList();
+                        break;
+
                     case "d":
+                        DeleteTickers();
                         break;
 
                     case "c":
+                        ClearTickers();
                         break;
 
                     case "q":
@@ -80,9 +90,51 @@ namespace CmdUtility
             }
         }
 
+        private void AddTickers()
+        {
+            Console.WriteLine("List tickers to add (delimiter = space):");
+            string line = Console.ReadLine();
+
+            tickers = line.Split(new char[] { ' ' }).ToList();
+        }
+
+        private void PrintTickerList()
+        {
+            Console.WriteLine($"You have {tickers.Count} tickers:");
+
+            foreach (string ticker in tickers)
+            {
+                Console.WriteLine(ticker);
+            }
+        }
+
+        private void DeleteTickers()
+        {
+            Console.WriteLine($"Which tickers do you want to delete (delimiter = space):");
+            string line = Console.ReadLine();
+
+            string[] tickersToDelete = line.Split(new char[] { ' ' });
+
+            foreach (string tickerToDelete in tickersToDelete)
+            {
+                tickers.Remove(tickerToDelete);
+            }
+        }
+
+        private void ClearTickers()
+        {
+            tickers.Clear();
+        }
+
         private void PrintHelp()
         {
-            Console.WriteLine("h - help\ng - get stock data\nd - define tickers\nc - clear tickers\nq - quit");
+            Console.WriteLine("h - help");
+            Console.WriteLine("g - get stock data");
+            Console.WriteLine("a - add tickers");
+            Console.WriteLine("p - print tickers");
+            Console.WriteLine("d - delete tickers");
+            Console.WriteLine("c - clear tickers");
+            Console.WriteLine("q - quit");
         }
     }
 }
