@@ -95,7 +95,7 @@ namespace CmdUtility
             Console.WriteLine("List tickers to add (delimiter = space):");
             string line = Console.ReadLine();
 
-            tickers = line.Split(new char[] { ' ' }).ToList();
+            tickers.AddRange(line.Split(new char[] { ' ' }));
         }
 
         private void PrintTickerList()
