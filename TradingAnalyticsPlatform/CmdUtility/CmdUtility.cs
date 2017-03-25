@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using System.Configuration;
 
 using IntrinioDownloaderLib;
+using UserLib;
 
 namespace CmdUtility
 {
     class CmdUtility
     {
         private LiveStockData liveStockData;
-        private List<string> tickers = new List<string>();
+        private UserAccount userAccount;
 
         public CmdUtility()
         {
@@ -20,6 +21,8 @@ namespace CmdUtility
             string password = ConfigurationManager.AppSettings["password"];
 
             liveStockData = new LiveStockData(username, password);
+
+            userAccount = new UserAccount();
         }
 
         public void Run()
@@ -64,7 +67,7 @@ namespace CmdUtility
 
         private void GetStockData()
         {
-            if (tickers.Count == 0)
+            if (userAccount.Tickers.Count == 0)
             {
                 Console.WriteLine("No tickers defined.");
                 return;
@@ -72,7 +75,7 @@ namespace CmdUtility
 
             try
             {
-                List<StockPriceInfo> stockPriceInfos = liveStockData.GetLatestPrice(tickers);
+                List<StockPriceInfo> stockPriceInfos = liveStockData.GetLatestPrice(userAccount.Tickers);
 
                 foreach (StockPriceInfo priceInfo in stockPriceInfos)
                 {
@@ -95,14 +98,14 @@ namespace CmdUtility
             Console.WriteLine("List tickers to add (delimiter = space):");
             string line = Console.ReadLine();
 
-            tickers.AddRange(line.Split(new char[] { ' ' }));
+            userAccount.AddTickers(line.Split(new char[] { ' ' }));
         }
 
         private void PrintTickerList()
         {
-            Console.WriteLine($"You have {tickers.Count} tickers:");
+            Console.WriteLine($"You have {userAccount.Tickers.Count} tickers:");
 
-            foreach (string ticker in tickers)
+            foreach (string ticker in userAccount.Tickers)
             {
                 Console.WriteLine(ticker);
             }
@@ -117,13 +120,13 @@ namespace CmdUtility
 
             foreach (string tickerToDelete in tickersToDelete)
             {
-                tickers.Remove(tickerToDelete);
+                userAccount.Tickers.Remove(tickerToDelete);
             }
         }
 
         private void ClearTickers()
         {
-            tickers.Clear();
+            userAccount.ClearTickers();
         }
 
         private void PrintHelp()
