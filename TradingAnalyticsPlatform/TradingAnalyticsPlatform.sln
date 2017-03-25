@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntrinioDownloaderLib", "IntrinioDownloaderLib\IntrinioDownloaderLib.csproj", "{AA2EFA2E-599F-4770-BE84-6B778E46C005}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CmdUtility", "CmdUtility\CmdUtility.csproj", "{0C87A581-0481-467F-BD21-C419A1B20B7F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockDataDownloader", "StockDataDownloader\StockDataDownloader.csproj", "{ED94DD4F-AF89-4D33-A50D-D2CE1E28541F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Downloader", "Downloader", "{0465FDA3-D1E4-42BF-B380-B5CBEFC40033}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
