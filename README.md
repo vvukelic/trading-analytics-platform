@@ -1,2 +1,1 @@
-# stock-data-downloader
-Downloads stocks data from APIs
+# trading-analytics-platform
