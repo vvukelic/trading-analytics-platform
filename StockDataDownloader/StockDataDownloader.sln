@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntrinioDownloaderLib", "In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CmdUtility", "CmdUtility\CmdUtility.csproj", "{0C87A581-0481-467F-BD21-C419A1B20B7F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockDataDownloader", "StockDataDownloader\StockDataDownloader.csproj", "{ED94DD4F-AF89-4D33-A50D-D2CE1E28541F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0C87A581-0481-467F-BD21-C419A1B20B7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C87A581-0481-467F-BD21-C419A1B20B7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C87A581-0481-467F-BD21-C419A1B20B7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED94DD4F-AF89-4D33-A50D-D2CE1E28541F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED94DD4F-AF89-4D33-A50D-D2CE1E28541F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED94DD4F-AF89-4D33-A50D-D2CE1E28541F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED94DD4F-AF89-4D33-A50D-D2CE1E28541F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
