@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockDataDownloader", "Stoc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Downloader", "Downloader", "{0465FDA3-D1E4-42BF-B380-B5CBEFC40033}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserLib", "UserLib\UserLib.csproj", "{248788F3-2B31-44F1-AADF-25BE2B532B98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{ED94DD4F-AF89-4D33-A50D-D2CE1E28541F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED94DD4F-AF89-4D33-A50D-D2CE1E28541F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED94DD4F-AF89-4D33-A50D-D2CE1E28541F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{248788F3-2B31-44F1-AADF-25BE2B532B98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{248788F3-2B31-44F1-AADF-25BE2B532B98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{248788F3-2B31-44F1-AADF-25BE2B532B98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{248788F3-2B31-44F1-AADF-25BE2B532B98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
