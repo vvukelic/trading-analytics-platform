@@ -29,7 +29,7 @@ namespace StockDataDownloader
             {
                 foreach (var v in r.Values)
                 {
-                    Console.WriteLine($"{v[0]} {v[1]} {v[2]} {v[3]}");
+                    Console.WriteLine($"{v[0]} {v[1]} {v[2]}");
                 }
             }
         }
