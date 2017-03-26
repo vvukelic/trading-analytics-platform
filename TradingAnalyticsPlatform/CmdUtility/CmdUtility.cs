@@ -120,7 +120,7 @@ namespace CmdUtility
 
             foreach (string tickerToDelete in tickersToDelete)
             {
-                userAccount.Tickers.Remove(tickerToDelete);
+                userAccount.RemoveTicker(tickerToDelete);
             }
         }
 

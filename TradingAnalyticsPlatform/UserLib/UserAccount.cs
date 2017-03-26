@@ -8,7 +8,7 @@ namespace UserLib
 {
     public class UserAccount
     {
-        public List<string> Tickers { get { return tickers; } }
+        public IReadOnlyList<string> Tickers => tickers.AsReadOnly();
 
         private List<string> tickers = new List<string>();
 

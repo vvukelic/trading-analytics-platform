@@ -31,7 +31,7 @@ namespace IntrinioDownloaderLib
             return response.Data;
         }
 
-        public List<StockPriceInfo> GetLatestPrice(List<string> tickers)
+        public List<StockPriceInfo> GetLatestPrice(IReadOnlyList<string> tickers)
         {
             if (tickers.Count == 0)
             {
