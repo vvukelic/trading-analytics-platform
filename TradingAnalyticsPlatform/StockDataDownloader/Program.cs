@@ -4,23 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using System.Threading;
-using InfluxData.Net.InfluxDb;
-
 namespace StockDataDownloader
 {
     class Program
     {
         static void Main(string[] args)
         {
-            var client = new InfluxDbClient("http://localhost:8086", "root", "root", InfluxData.Net.Common.Enums.InfluxDbVersion.Latest);
+            StockDataDownloader stockDataDownloader = new StockDataDownloader();
 
-            GetResponse(client);
-
-            Thread.Sleep(1000);
+            stockDataDownloader.Run();
         }
 
-        static async void GetResponse(InfluxDbClient client)
+        /*static async void GetResponse(InfluxDbClient client)
         {
             var query = "SELECT * FROM stock WHERE symbol = 'AAPL'";
             var response = await client.Client.QueryAsync("testDb", query);
@@ -32,6 +27,6 @@ namespace StockDataDownloader
                     Console.WriteLine($"{v[0]} {v[1]} {v[2]}");
                 }
             }
-        }
+        }*/
     }
 }
