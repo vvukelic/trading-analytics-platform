@@ -35,11 +35,16 @@ namespace StockDataDownloader
 
         public void Run()
         {
-            List<StockPriceInfo> prices = liveStockData.GetLatestPrice(userAccount.Tickers);
+            Console.WriteLine("Starting stoc data downloader...");
 
-            WritePricesToDb(prices);
+            while (true)
+            {
+                List<StockPriceInfo> prices = liveStockData.GetLatestPrice(userAccount.Tickers);
 
-            Thread.Sleep(5000);
+                WritePricesToDb(prices);
+
+                Thread.Sleep(1000 * 30);
+            }
         }
 
         private async void WritePricesToDb(List<StockPriceInfo> prices)
@@ -69,7 +74,7 @@ namespace StockDataDownloader
             
             if (response.Success)
             {
-                Console.WriteLine("Succesfully written to Db!");
+                Console.WriteLine($"Succesfully written to Db at {DateTime.UtcNow}");
             }
         }
     }
