@@ -10,14 +10,13 @@ using InfluxData.Net.InfluxDb;
 using InfluxData.Net.InfluxDb.Models;
 
 using IntrinioDownloaderLib;
-using UserLib;
 
 namespace StockDataDownloader
 {
     class StockDataDownloader
     {
         private LiveStockData liveStockData;
-        private UserAccount userAccount;
+        private List<string> tickers = new List<string>();
         private InfluxDbClient dbClient;
 
         public StockDataDownloader()
@@ -27,8 +26,7 @@ namespace StockDataDownloader
 
             liveStockData = new LiveStockData(username, password);
 
-            userAccount = new UserAccount();
-            userAccount.AddTickers(ConfigurationManager.AppSettings["tickers"].Split(new char[] { ' ' }));
+            tickers.AddRange(ConfigurationManager.AppSettings["tickers"].Split(new char[] { ' ' }));
 
             dbClient = new InfluxDbClient("http://localhost:8086", "root", "root", InfluxData.Net.Common.Enums.InfluxDbVersion.Latest);
         }
@@ -39,7 +37,7 @@ namespace StockDataDownloader
 
             while (true)
             {
-                List<StockPriceInfo> prices = liveStockData.GetLatestPrice(userAccount.Tickers);
+                List<StockPriceInfo> prices = liveStockData.GetLatestPrice(tickers.AsReadOnly());
 
                 WritePricesToDb(prices);
 
